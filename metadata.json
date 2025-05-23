@@ -1,0 +1,8 @@
+{
+  "name": "Quiz Master Pro",
+  "description": "Generate interactive quizzes on any topic using AI. Features customizable question counts, image-based questions, quiz history, authentication, shareable quizzes, leaderboards, and conceptual proctored mode.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "prompt": ""
+}
