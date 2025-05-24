@@ -54,7 +54,7 @@ const App: React.FC = () => {
 
   // Initial setup: API keys check, load user data if logged in
   useEffect(() => {
-    const geminiApiKey = process.env.API_KEY;
+    const geminiApiKey = import.meta.env.VITE_API_KEY;
     let keyStatusMsg = '';
     if (!geminiApiKey) keyStatusMsg += 'Gemini API Key is not configured. AI features may be unavailable.';
     if (!PEXELS_API_KEY) keyStatusMsg += (keyStatusMsg ? ' ' : '') + 'Pexels API Key missing. Image questions may not work.';
@@ -152,7 +152,7 @@ const App: React.FC = () => {
 
 
   const handleGenerateQuiz = useCallback(async (config: QuizConfig) => {
-    if (!process.env.API_KEY) {
+    if (!import.meta.env.VITE_API_KEY) {
         setError("Gemini API Key is not set. Cannot generate quiz.");
         setCurrentView('form');
         return;

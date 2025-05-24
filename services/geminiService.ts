@@ -8,9 +8,9 @@ export async function generateQuiz(
     imageUrl?: string,
     bloomLevel?: string
 ): Promise<Quiz> {
-  const apiKey = process.env.API_KEY;
+  const apiKey = import.meta.env.VITE_API_KEY;
   if (!apiKey) {
-    throw new Error("Gemini API key not found. Please ensure API_KEY environment variable is set.");
+    throw new Error("Gemini API key not found. Please ensure VITE_API_KEY environment variable is set.");
   }
 
   let imagePromptSection = "";
@@ -136,9 +136,9 @@ All ${numQuestions} questions should be unique.
 }
 
 export async function getSimplifiedExplanation(textToSimplify: string): Promise<string> {
-  const apiKey = process.env.API_KEY;
+  const apiKey = import.meta.env.VITE_API_KEY;
   if (!apiKey) {
-    throw new Error("Gemini API key not found. Please ensure API_KEY environment variable is set.");
+    throw new Error("Gemini API key not found. Please ensure VITE_API_KEY environment variable is set.");
   }
   const prompt = `Please simplify the following text. Explain it in a very simple way, as if you were talking to a 5-year-old child. Be clear, concise, and use easy-to-understand words.\n\nOriginal Text:\n---\n${textToSimplify}\n---\n\nSimplified Explanation (for a 5-year-old):`;
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
